@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DTO\Payload;
 use App\Identifier\Payload as PayloadIdentifier;
+use App\Jobs\PassPayloadJob;
 use App\PayloadDecoder\JsonPayloadDecoder;
 use App\Rules\DisallowCampaignB;
 use App\Rules\RuleInterface;
@@ -73,19 +74,9 @@ final class MicroserviceController extends BaseController
                 }
             }
 
-            // Guzzle request to
-            // Add to queue rather than running requests in foreach
-
-            //Commented out since, we don't have actual endpoints
-//            $client = new Client();
-//
-//            $response = $client->request('POST', $microservice, [
-//                'body' => $payload
-//            ]);
-//
-//            if ($response->getStatusCode() !== 200) {
-//                $status = false;
-//            }
+            if ($passed) {
+                dispatch(new PassPayloadJob($microservice['endpoint'], $payload));
+            }
         }
 
         if (!$status) {
