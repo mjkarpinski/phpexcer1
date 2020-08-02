@@ -6,6 +6,7 @@ final class Payload
 {
     private $name;
     private $phone;
+    private $email;
     private $queryType;
     private $callStats;
     private $campaign;
@@ -13,12 +14,14 @@ final class Payload
     public function __construct(
         string $name,
         string $phone,
+        string $email,
         QueryType $queryType,
         CallStats $callStats,
         Campaign $campaign
     ) {
         $this->name = $name;
         $this->phone = $phone;
+        $this->email = $email;
         $this->queryType = $queryType;
         $this->callStats = $callStats;
         $this->campaign = $campaign;
@@ -32,6 +35,11 @@ final class Payload
     public function getPhone(): string
     {
         return $this->phone;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
     }
 
     public function getQueryType(): QueryType
