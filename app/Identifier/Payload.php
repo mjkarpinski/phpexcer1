@@ -4,7 +4,7 @@ namespace App\Identifier;
 
 final class Payload
 {
-    private const JSON_TYPE = 'json';
+    public const JSON_TYPE = 'json';
 
     public static function identifyType(string $payload)
     {
