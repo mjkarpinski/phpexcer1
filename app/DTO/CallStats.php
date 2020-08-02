@@ -8,25 +8,26 @@ final class CallStats
     private $length;
     private $recordingUrl;
 
-    public function __construct($id, $length, $recordingUrl)
+    public function __construct(int $id, string $length, string $recordingUrl)
     {
         $this->id = $id;
         $this->length = $length;
         $this->recordingUrl = $recordingUrl;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getLength()
+    public function getLength(): string
     {
         return $this->length;
     }
 
-    public function getRecordingUrl()
+    public function getRecordingUrl(): string
     {
         return $this->recordingUrl;
     }
+
 }
